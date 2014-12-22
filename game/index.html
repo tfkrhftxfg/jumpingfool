@@ -23,5 +23,44 @@
 <canvas id="gameCanvas" width="800" height="450"></canvas>
 
 <script src="game.min.js"></script>
+<script src="WeixinApi.js"></script>
+<script>
+
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a1b273b6530399b5f4ce60c7e87cb00e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    // 微信分享的数据
+    window.wxData = {
+        "appId": "", // 服务号可以填写appId
+        "imgUrl": "http://upyun.cocimg.com/cocoachina/cocos_logo.png",
+        "link": "http://devcon.cocos.com/weixin/",
+        "desc": ".......",
+        "title": "JumpingFool"
+    };
+
+    WeixinApi.ready(function (Api) {
+        // 分享的回调
+        var wxCallbacks = {
+            ready: function () {
+            },
+
+            cancel: function (resp) {
+            },
+            fail: function (resp) {
+            },
+            confirm: function (resp) {
+            },
+            all: function (resp) {
+            }
+        };
+        Api.shareToFriend(wxData, wxCallbacks);
+        Api.shareToTimeline(wxData, wxCallbacks);
+        Api.shareToWeibo(wxData, wxCallbacks);
+    });
+</script>
 </body>
 </html>
